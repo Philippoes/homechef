@@ -1,6 +1,6 @@
 <ul>
   <% @dishes.each do |dish| %>
-    <li id="dish_#{dish.id}">
+    <li id="dish_<%= dish.id %>">
       <%= dish.name.humanize %><br/>
       <%= dish.description.humanize %>
       Price: <%= dish.price %>kr
