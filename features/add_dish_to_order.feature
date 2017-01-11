@@ -12,4 +12,4 @@ Feature: Add dish to order
   Scenario: Successfully add dish to order
     When I am on the "landing" page
     And I click the "Add dish" button for "meatballs"
-#    Then the selected dish should be added to my order list
+    Then "meatballs" should be added to my order list

@@ -1,0 +1,2 @@
+class BuyingorderlistController < ApplicationController
+end
