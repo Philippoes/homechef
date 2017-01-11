@@ -7,7 +7,8 @@
       Ready for pick-up at <%= dish.ready_time.strftime('%H:%M') %>
       <%= dish.portions %> portions left
       <!--button, om du klickar så läggs dish med id="dish.id" till min lista-->
-      tag("input", type: 'button', class: "button", value: "Add dish")
+      <!--<%= tag("input", type: 'submit', class: "button", value: "Add dish") %>-->
+      <input type="button" value="Add dish" />
     </li>
   <% end %>
 </ul>
