@@ -6,7 +6,8 @@
       Price: <%= dish.price %>kr
       Ready for pick-up at <%= dish.ready_time.strftime('%H:%M') %>
       <%= dish.portions %> portions left
-      <%= tag("input", type: 'submit', class: "button", value: "Add dish") %>
+      <!--< form_tag({controller: "buyingorderlist", action: "create"}, method: "post") %>-->
+      <%= tag("input", type: 'submit', class: "button", value: "Add dish") %>-->
     </li>
   <% end %>
 </ul>
