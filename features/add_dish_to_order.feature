@@ -13,3 +13,10 @@ Feature: Add dish to order
     When I am on the "landing" page
     And I click the "Add dish" button for "meatballs"
     Then "meatballs" should be added to my order list
+
+  #keep these steps in mind for code on row 15
+   # edit it by adding the "meatballs" dish
+   # if there is no sellingorderslist, create a sellingorderlist
+   # and edit it by adding the "meatballs" dish
+   # otherwise add "meatballs" to the existing sellingorderslist
+   # stay on the same page
