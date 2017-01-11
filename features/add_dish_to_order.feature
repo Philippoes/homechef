@@ -12,10 +12,11 @@ Feature: Add dish to order
   Scenario: Successfully add dish to order
     When I am on the "landing" page
     And I click the "Add dish" button for "meatballs"
-    Then "meatballs" should be added to my order list
+    Then I should see "successfully added to order"
 
   #keep these steps in mind for code on row 15
-   # edit it by adding the "meatballs" dish
+   # create a new buyingorderlist
+   # edit it by adding the "meatballs" dish = orderitem
    # if there is no sellingorderslist, create a sellingorderlist
    # and edit it by adding the "meatballs" dish
    # otherwise add "meatballs" to the existing sellingorderslist

@@ -15,7 +15,6 @@ Then(/^I should be on the main landing page$/) do
 end
 
 Then(/^"([^"]*)" should be added to my order list$/) do |dish|
-  # create a buyingorderslist
   visit 'buyingorderlist/create'
-  # visit create_buyingorderslist_path
+  # visit buyingorderslists_path
 end
