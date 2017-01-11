@@ -1,0 +1,2 @@
+class Buyingorder < ApplicationRecord
+end
