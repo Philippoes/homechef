@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'orderitems/resources'
+
   get 'buyingorderlists/create'
 
   root controller: :landing, action: :index

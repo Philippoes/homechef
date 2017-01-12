@@ -7,7 +7,11 @@
       Ready for pick-up at <%= dish.ready_time.strftime('%H:%M') %>
       <%= dish.portions %> portions left
       <!--< form_tag({controller: "buyingorderlist", action: "create"}, method: "post") %>-->
-      <%= tag("input", type: 'submit', class: "button", value: "Add dish") %>-->
+      <!-- hidden dish.id input -->
+      <%= tag("input", type: 'submit', class: "button", value: "Add dish") %>
+      <%
+        # add dish.id to button?
+      %>
     </li>
   <% end %>
 </ul>
