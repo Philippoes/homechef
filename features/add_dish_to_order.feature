@@ -11,7 +11,8 @@ Feature: Add dish to order
 
   Scenario: Successfully add dish to order
     When I am on the "landing" page
-    And I click the "Add dish" button for "meatballs"
+    And I focus on dish "meatballs"
+    And I click the "Add dish" button for
     Then I should see "Successfully added to order"
 
   #keep these steps in mind for code on row 15

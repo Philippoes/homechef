@@ -1,13 +1,14 @@
 <ul>
   <% @dishes.each do |dish| %>
+      <%= dish.id = @id %>
     <li>
       <%= dish.name.humanize %><br/>
       <%= dish.description.humanize %>
       Price: <%= dish.price %>kr
       Ready for pick-up at <%= dish.ready_time.strftime('%H:%M') %>
       <%= dish.portions %> portions left
-      <%= form_tag orderitems_path, id: "dish_#{dish.id}" do %>
-          <%= hidden_field_tag :dish, dish.id %>
+      <%= form_tag orders_path, id: "dish_#{@id}" do %>
+          <%= hidden_field_tag :dish, @id %>
           <%= submit_tag "Add dish", class: "button" %>
       <% end %>
     </li>
