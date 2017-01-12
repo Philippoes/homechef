@@ -1,17 +1,17 @@
 <ul>
   <% @dishes.each do |dish| %>
-    <li id="dish_<%= dish.id %>">
+    <li>
       <%= dish.name.humanize %><br/>
       <%= dish.description.humanize %>
       Price: <%= dish.price %>kr
       Ready for pick-up at <%= dish.ready_time.strftime('%H:%M') %>
       <%= dish.portions %> portions left
-      <!--< form_tag({controller: "buyingorderlist", action: "create"}, method: "post") %>-->
-      <!-- hidden dish.id input -->
-      <%= tag("input", type: 'submit', class: "button", value: "Add dish") %>
-      <%
-        # add dish.id to button?
-      %>
+      <%= form_tag orderitems_path, id: "dish_#{dish.id}" do %>
+          <%= hidden_field_tag :dish, dish.id %>
+          <%= submit_tag "Add dish", class: "button" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
+
+
