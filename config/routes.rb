@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'sellingorder/create'
-
   root controller: :landing, action: :index
   resources :dishes, only: [:index, :show]
-  resources :buyingorderlists, :sellingorderlists, :orderitems, only: [:index, :create, :show, :edit, :update, :destroy ]
+  resources :orders, only: [:index, :create, :show, :edit, :update, :destroy ]
 end
