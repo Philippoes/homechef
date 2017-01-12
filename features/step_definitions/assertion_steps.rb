@@ -13,3 +13,8 @@ end
 Then(/^I should be on the main landing page$/) do
   visit root_path
 end
+
+Then(/^"([^"]*)" should be added to my order list$/) do |dish|
+  visit 'buyingorderlist/create'
+  # visit buyingorderslists_path
+end

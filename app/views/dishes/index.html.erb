@@ -6,6 +6,12 @@
       Price: <%= dish.price %>kr
       Ready for pick-up at <%= dish.ready_time.strftime('%H:%M') %>
       <%= dish.portions %> portions left
+      <%= form_tag orderitems_path, id: "dish_#{dish.id}" do %>
+          <%= hidden_field_tag :dish, dish.id %>
+          <%= submit_tag "Add dish", class: "button" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
+
+
