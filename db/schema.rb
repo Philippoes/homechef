@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112102548) do
+ActiveRecord::Schema.define(version: 20170112182606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,18 +26,20 @@ ActiveRecord::Schema.define(version: 20170112102548) do
     t.integer  "price"
     t.datetime "ready_time"
     t.integer  "portions"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "orderitem_id"
-    t.index ["orderitem_id"], name: "index_dishes_on_orderitem_id", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "orderitems", force: :cascade do |t|
     t.datetime "pickup_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "buyingorder_id"
+    t.integer  "dish_id"
+    t.integer  "sellingorder_id"
     t.index ["buyingorder_id"], name: "index_orderitems_on_buyingorder_id", using: :btree
+    t.index ["dish_id"], name: "index_orderitems_on_dish_id", using: :btree
+    t.index ["sellingorder_id"], name: "index_orderitems_on_sellingorder_id", using: :btree
   end
 
   create_table "sellingorders", force: :cascade do |t|
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170112102548) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "dishes", "orderitems"
   add_foreign_key "orderitems", "buyingorders"
+  add_foreign_key "orderitems", "dishes"
+  add_foreign_key "orderitems", "sellingorders"
 end
