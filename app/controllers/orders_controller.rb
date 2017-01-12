@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 	end
 
 
-	def create
+	def create_orderitem
 		Orderitem.create(pickup_time: Dishes.find(params[:id]).readytime, dish: Dishes.find(params[:id]), buyingorder: @buyingorder, sellingorder: @sellingorder)
 		redirect_to root_path
 		flash[:notice] = "Successfully added to order"
