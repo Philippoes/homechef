@@ -11,8 +11,8 @@ Feature: As a Buying User,
   Background:
     Given the following dishes exists
       | name      | description                                               | price | ready_time | portions |
-      | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
-      | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
+      | meatballs | homecooked with love, including mashed potatoes and sauce |  10   | 18:00      | 10       |
+      | taco      | really spicy authentic mexican tacos                      |  10   | 16:00      | 10       |
 
   Scenario: Buying User pays for the dishes in her order
     When I am on the "landing" page

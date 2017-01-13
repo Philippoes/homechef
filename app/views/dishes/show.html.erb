@@ -1,5 +1,5 @@
 <%= @dish.name.humanize %><br/>
 <%= @dish.description.humanize %>
-Price: <%= @dish.price %>kr
+Price: $<%= @dish.price %>
 Ready for pick-up at <%= @dish.ready_time.strftime('%H:%M') %>
 <%= @dish.portions %> portions left
