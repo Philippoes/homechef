@@ -13,4 +13,4 @@ Feature: As a Buying User,
     And I click the stripe button
     And I fill in my card details on the stripe form
     And I submit the stripe form
-    Then I should see "Thanks, you paid $5.49!" on the order confirmation
+    Then I should see "Thanks, you paid $50.00!" on the order confirmation
