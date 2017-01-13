@@ -9,10 +9,10 @@ Feature: As a Buying User,
   I need to see payment confirmation through a payment solution
 
   Background:
-  Given the following dishes exists
-  | name      | description                                               | price | ready_time | portions |
-  | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
-  | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
+    Given the following dishes exists
+      | name      | description                                               | price | ready_time | portions |
+      | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
+      | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
 
   Scenario: Buying User pays for the dishes in her order
     When I am on the "landing" page
