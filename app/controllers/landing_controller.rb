@@ -4,9 +4,6 @@ class LandingController < ApplicationController
   end
 
   def checkout
-    @total_amount = 50
-    # ShoppingCart.find_by(id: 1).shopping_cart_items.each do |shoppingcartitem|
-    #   @totalamount += shoppingcartitem.item.price
-    # end
+    @total_amount = Order.last.total
   end
 end
