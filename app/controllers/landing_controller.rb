@@ -4,7 +4,6 @@ class LandingController < ApplicationController
   end
 
   def checkout
-    @total_amount = 50
-    @total_amount = (@total_amount / 9.11).round(2)
+    @total_amount = Order.last.total
   end
 end

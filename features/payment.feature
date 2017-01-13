@@ -14,11 +14,13 @@ Feature: As a Buying User,
   | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
   | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
 
-  And there are two dishes in my order
-
   Scenario: Buying User pays for the dishes in her order
-    When I am on the "Checkout" page
+    When I am on the "landing" page
+    And I click the "Add dish" button for "taco"
+    And I click the "Add dish" button for "meatballs"
+    And there should be "2" items on the last order
+    And I am on the "Checkout" page
     And I click the stripe button
     And I fill in my card details on the stripe form
     And I submit the stripe form
-    Then I should see "Thanks, you paid $20.00!" on the order confirmation
+    Then I should see "Thanks, you paid $21.65!" on the order confirmation

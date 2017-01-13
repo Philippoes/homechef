@@ -3,8 +3,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @total_amount = 50
-    @amount = (@total_amount*100)
+    @total_amount = Order.last.total
+    @amount = @total_amount.to_i*100
 
     customer = Stripe::Customer.create(
         email: params[:stripeEmail],
