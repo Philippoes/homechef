@@ -10,6 +10,7 @@ RSpec.describe OrderItem, type: :model do
     it { is_expected.to have_db_column :item_type }
     it { is_expected.to have_db_column :price_cents }
     it { is_expected.to have_db_column :price_currency }
+    it { is_expected.to have_db_column :bought }
   end
 
   describe "Actions" do
@@ -17,6 +18,7 @@ RSpec.describe OrderItem, type: :model do
     it { is_expected.to respond_to :quantity }
     it { is_expected.to respond_to :item }
     it { is_expected.to respond_to :price }
+    it { is_expected.to respond_to :bought }
   end
 
   describe "Associations" do
