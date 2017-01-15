@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170115193153) do
     t.string   "price_currency", default: "USD", null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.boolean  "bought"
+    t.boolean  "bought",         default: false
   end
 
   create_table "orders", force: :cascade do |t|
