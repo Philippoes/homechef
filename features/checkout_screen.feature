@@ -43,4 +43,4 @@ Feature: As a buying User,
     And I should see the stripe button
     When I click the "Remove" button for "meatballs"
     Then I should be on the "landing" page
-    Then I should see "You have no items in your order"
+    And I should see "You have no items in your order"
