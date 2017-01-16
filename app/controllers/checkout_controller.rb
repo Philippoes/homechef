@@ -3,11 +3,11 @@ class CheckoutController < ApplicationController
     if Order.last == nil
       redirect_to root_path
       flash[:notice] = "You have no items in your order"
-    elsif Order.last.shopping_cart_items.count == 0
+    elsif Order.last.shopping_cart_items.where(bought: false).count == 0
       redirect_to root_path
       flash[:notice] = "You have no items in your order"
     else
-      @order_items = Order.last.shopping_cart_items.all
+      @order_items = Order.last.shopping_cart_items.where(bought: false)
       @total_amount = Order.last.total
     end
   end
