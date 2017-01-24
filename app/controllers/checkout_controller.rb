@@ -19,5 +19,4 @@ class CheckoutController < ApplicationController
     flash[:notice] = "Removed dish from order"
     redirect_back(fallback_location: checkout_index_path)
   end
-
 end
