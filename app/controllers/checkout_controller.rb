@@ -1,13 +1,10 @@
 class CheckoutController < ApplicationController
   def index
-    if Order.last == nil
-      redirect_to root_path
-      flash[:notice] = "You have no items in your order"
-    elsif Order.last.shopping_cart_items.where(bought: false).count == 0
+    if Order.where(bought: false).count == 0 || Order.find_by(bought: false).shopping_cart_items.count == 0
       redirect_to root_path
       flash[:notice] = "You have no items in your order"
     else
-      @order_items = Order.last.shopping_cart_items.where(bought: false)
+      @order_items = Order.find_by(bought: false).shopping_cart_items
       @total_amount = Order.last.total
     end
   end

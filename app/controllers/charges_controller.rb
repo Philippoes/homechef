@@ -3,8 +3,11 @@ class ChargesController < ApplicationController
   end
 
   def create
-    Order.last.shopping_cart_items.update_all(bought: true)
-    @dishes = Order.last.shopping_cart_items.all
+    if Order.where(bought: false)
+      Order.find_by(bought: false).update(bought: true)
+    end
+
+    @items = Order.last.shopping_cart_items
     @total_amount = Order.last.total
     @amount = @total_amount.to_i*100
 
