@@ -39,5 +39,8 @@ end
 Then(/^I should be on the "([^"]*)" page$/) do |current_page|
   if current_page == "landing"
     expect(page.current_path).to eq root_path
+  elsif current_page == "Sign up"
+    expect(page.current_path).to eq new_user_registration_path
   end
 end
+
