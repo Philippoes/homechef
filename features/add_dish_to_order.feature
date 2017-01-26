@@ -29,7 +29,6 @@ Feature: Add dish to order
     And I click the "Add dish" button for "taco"
     And I click the "Add dish" button for "meatballs"
     And I am on the "Checkout" page
-    And show me the page
     And I click the stripe button
     And I fill in my card details on the stripe form
     And I submit the stripe form

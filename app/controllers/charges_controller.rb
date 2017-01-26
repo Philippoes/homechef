@@ -6,6 +6,10 @@ class ChargesController < ApplicationController
     @dishes = Order.last.shopping_cart_items.all
     @total_amount = Order.last.total
     @amount = @total_amount.to_i*100
+    Order.last.shopping_cart_items.each do |item|
+      dish = Dish.find(item.item.id)
+      dish.update(portions: dish.portions - item.quantity)
+    end
 
     customer = Stripe::Customer.create(
         email: params[:stripeEmail],

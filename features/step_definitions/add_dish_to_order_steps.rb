@@ -8,6 +8,6 @@ end
 Then(/^I should see "([^"]*)" for "([^"]*)"$/) do |portions, dish|
   scope = Dish.find_by(name: dish)
   within "#dish-#{scope.id}" do
-    expect(scope).to have_content portions
+    expect(page).to have_content portions
   end
 end
