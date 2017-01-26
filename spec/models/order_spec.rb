@@ -14,7 +14,7 @@ RSpec.describe Order, type: :model do
     it { is_expected.to respond_to :price_for }
     it { is_expected.to respond_to :update_quantity_for }
     it { is_expected.to respond_to :update_price_for }
-    it { is_expected.to respond_to :bought }
+    it { is_expected.to respond_to :finalized }
 
     let!(:product_1) { FactoryGirl.create(:dish, name: 'Hamburger', price: 4000) }
     let!(:product_2) { FactoryGirl.create(:dish, name: 'Pizza', price: 1000) }
