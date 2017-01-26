@@ -3,8 +3,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    if Order.where(bought: false)
-      Order.find_by(bought: false).update(bought: true)
+    if Order.where(finalized: false)
+      Order.find_by(finalized: false).update(finalized: true)
     end
 
     @items = Order.last.shopping_cart_items
