@@ -34,6 +34,7 @@ Feature: Add dish to order
     And I submit the stripe form
     And I should see "Thanks, you paid $9.00!" on the order confirmation page
     And I am on the "landing" page
+    And show me the page
     Then I should see "9 portions left" for "taco"
-    Then I should see "9 portions left" for "meatballs"
+    And I should see "9 portions left" for "meatballs"
 
