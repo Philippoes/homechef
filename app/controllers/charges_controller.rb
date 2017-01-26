@@ -24,6 +24,7 @@ class ChargesController < ApplicationController
     )
 
   rescue Stripe::CardError => e
+    Order.last.update(finalized: false)
     flash[:error] = e.message
     redirect_to checkout_index_path
   end
