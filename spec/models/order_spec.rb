@@ -28,5 +28,6 @@ RSpec.describe Order, type: :model do
 
   describe "Associations" do
     it { is_expected.to have_many :shopping_cart_items }
+    it { is_expected.to belong_to :user }
   end
 end

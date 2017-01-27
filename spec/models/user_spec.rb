@@ -12,4 +12,8 @@ RSpec.describe User, type: :model do
         expect(FactoryGirl.create(:user)).to be_valid
       end
     end
+
+  describe 'Associations' do
+    it { is_expected.to have_many :orders }
+  end
 end
