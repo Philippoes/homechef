@@ -5,9 +5,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    if Order.where(finalized: false)
-      Order.find_by(finalized: false).update(finalized: true)
-    end
+    @order = current_user.orders.find_by(finalized: false)
+    @order.update(finalized: true)
 
     @items = Order.last.shopping_cart_items
     @total_amount = Order.last.total
@@ -26,7 +25,7 @@ class ChargesController < ApplicationController
     )
 
   rescue Stripe::CardError => e
-    Order.last.update(finalized: false)
+    @order.update(finalized: false)
     flash[:error] = e.message
     redirect_to checkout_index_path
   end
