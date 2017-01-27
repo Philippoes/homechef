@@ -10,6 +10,7 @@ Feature:
       | name      | description                                               | price | ready_time | portions |
       | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
       | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
+    And that there is a user logged in with an email of "email@random.com"
 
   Scenario: User purchases a dish and is being shown pick_up time and order summary at a confirmation page
     When I am on the "landing" page

@@ -14,6 +14,7 @@ Feature: As a Buying User,
       | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
       | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
     And I am on the "landing" page
+    And that there is a user logged in with an email of "email@random.com"
 
 
   Scenario: Buying User pays for the dishes in her order

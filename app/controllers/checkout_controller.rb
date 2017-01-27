@@ -1,11 +1,15 @@
 class CheckoutController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    if Order.where(finalized: false).count == 0 || Order.find_by(finalized: false).shopping_cart_items.count == 0
+    @order = current_user.orders.find_by(finalized: false)
+
+    if @order == nil || @order.shopping_cart_items.count == 0
       redirect_to root_path
       flash[:notice] = "You have no items in your order"
     else
-      @order_items = Order.find_by(finalized: false).shopping_cart_items
-      @total_amount = Order.last.total
+      @order_items = @order.shopping_cart_items
+      @total_amount = @order.total
     end
   end
 
