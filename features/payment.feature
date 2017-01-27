@@ -48,7 +48,6 @@ Feature: As a Buying User,
     And I am on the "Checkout" page
     And I click the stripe button
     And I check out but my card is declined
-    And Show me an image of the page
     Then I should see "The card was declined"
 
 
