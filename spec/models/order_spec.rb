@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
 
+  describe "Validations" do
+    it { is_expected.to validate_presence_of :user }
+  end
+
+
   describe "Actions" do
     it { is_expected.to respond_to :add }
     it { is_expected.to respond_to :items? }
@@ -20,6 +25,7 @@ RSpec.describe Order, type: :model do
     let!(:product_2) { FactoryGirl.create(:dish, name: 'Pizza', price: 1000) }
 
     it 'calculates subtotal' do
+      subject.user = FactoryGirl.create(:user)
       subject.save!
       subject.add(product_1, product_1.price, 2)
       expect(subject.subtotal.to_i).to eq (product_1.price * 2).to_i
