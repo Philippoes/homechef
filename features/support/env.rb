@@ -22,3 +22,9 @@ end
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_max_wait_time = 20
+
+include Warden::Test::Helpers
+
+After do
+  Warden.test_reset!
+end

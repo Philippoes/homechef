@@ -1,14 +1,15 @@
 class CheckoutController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    if Order.last == nil
-      redirect_to root_path
-      flash[:notice] = "You have no items in your order"
-    elsif Order.last.shopping_cart_items.count == 0
+    @order = current_user.orders.find_by(finalized: false)
+
+    if @order == nil || @order.shopping_cart_items.count == 0
       redirect_to root_path
       flash[:notice] = "You have no items in your order"
     else
-      @order_items = Order.last.shopping_cart_items.all
-      @total_amount = Order.last.total
+      @order_items = @order.shopping_cart_items
+      @total_amount = @order.total
     end
   end
 
@@ -19,5 +20,4 @@ class CheckoutController < ApplicationController
     flash[:notice] = "Removed dish from order"
     redirect_back(fallback_location: checkout_index_path)
   end
-
 end

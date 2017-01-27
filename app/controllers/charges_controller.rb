@@ -1,9 +1,12 @@
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
   end
 
   def create
-    @dishes = Order.last.shopping_cart_items.all
+    @order = current_user.orders.find_by(finalized: false)
+    @items = Order.last.shopping_cart_items
     @total_amount = Order.last.total
     @amount = @total_amount.to_i*100
 
@@ -18,6 +21,10 @@ class ChargesController < ApplicationController
         description: 'Rails Stripe customer',
         currency: 'usd'
     )
+
+    if charge != nil
+      @order.update(finalized: true)
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
