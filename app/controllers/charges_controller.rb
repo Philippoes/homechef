@@ -1,12 +1,12 @@
 class ChargesController < ApplicationController
   before_action :authenticate_user!
+  @order = Order.find(session[:order_id])
 
   def new
   end
 
   def create
-    @order = current_user.orders.find_by(finalized: false)
-    @items = Order.last.shopping_cart_items
+    @items = @order.shopping_cart_items
     @total_amount = Order.last.total
     @amount = @total_amount.to_i*100
 

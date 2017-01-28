@@ -19,12 +19,12 @@ Then(/^I should be on the "landing page$/) do
 end
 
 Then(/^"([^"]*)" should be added to the last order$/) do |dish_name|
-  order = Order.last
+  order = Order.find(session[:order_id])
   expect(order.shopping_cart_items.last.item.name).to eq dish_name
 end
 
 Then(/^there should be "([^"]*)" items on the last order$/) do |count|
-  order = Order.last
+  order = Order.find(session[:order_id])
   expect(order.shopping_cart_items.count).to eq count.to_i
 end
 
