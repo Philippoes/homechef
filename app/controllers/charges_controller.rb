@@ -24,6 +24,7 @@ class ChargesController < ApplicationController
     # binding.pry
     if charge.paid
       @order.update(finalized: true)
+      session.delete :order_id
     end
 
   rescue Stripe::CardError => e

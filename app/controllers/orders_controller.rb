@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
 
   def add_to_order
 		# binding.pry
-	  if session[:order_id] == nil || Order.find(session[:order_id]).finalized == true
+	  if session[:order_id] == nil
 		  create_order
-			binding.pry
+			# binding.pry
 	  else
       @order = Order.find(session[:order_id])
     end
@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
   private
 
   def create_order
-    order = Order.create(user: current_user)
-    session[:order_id] = order.id
-    @order = Order.find(session[:order_id])
+		@order = Order.create(user: current_user)
+    session[:order_id] = @order.id
+		@order = Order.find(session[:order_id])
   end
 end
