@@ -20,5 +20,6 @@ class OrdersController < ApplicationController
   def create_order
     order = Order.create(user: current_user)
     session[:order_id] = order.id
+    # @order = Order.find(session[:order_id])
   end
 end

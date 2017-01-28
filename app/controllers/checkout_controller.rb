@@ -3,7 +3,7 @@ class CheckoutController < ApplicationController
 
 
   def index
-    @order = Order.find(session[:order_id])
+    @order = Order.find_by(id: session[:order_id], finalized: false)
     if @order == nil || @order.shopping_cart_items.count == 0
       redirect_to root_path
       flash[:notice] = "You have no items in your order"

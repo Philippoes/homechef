@@ -21,7 +21,7 @@ class ChargesController < ApplicationController
         description: 'Rails Stripe customer',
         currency: 'usd'
     )
-    binding.pry
+    # binding.pry
     if charge.paid
       @order.update(finalized: true)
     end
