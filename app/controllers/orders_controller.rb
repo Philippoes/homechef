@@ -2,9 +2,9 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def add_to_order
-	  if session[:order_id] == nil || Order.find(session[:order_id]).finalized == true
-		  create_order
-	  else
+    if session[:order_id] == nil || Order.find(session[:order_id]).finalized == true
+      create_order
+    else
       @order = Order.find(session[:order_id])
     end
 
