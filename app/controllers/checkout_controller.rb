@@ -1,8 +1,9 @@
 class CheckoutController < ApplicationController
   before_action :authenticate_user!
-  @order = Order.find(session[:order_id])
+
 
   def index
+    @order = Order.find(session[:order_id])
     if @order == nil || @order.shopping_cart_items.count == 0
       redirect_to root_path
       flash[:notice] = "You have no items in your order"
@@ -13,6 +14,7 @@ class CheckoutController < ApplicationController
   end
 
   def delete
+    @order = Order.find(session[:order_id])
     dish = Dish.find_by(id: params[:dish_id])
     @order.remove(dish)
     flash[:notice] = "Removed dish from order"

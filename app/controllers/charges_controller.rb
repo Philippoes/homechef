@@ -1,13 +1,13 @@
 class ChargesController < ApplicationController
   before_action :authenticate_user!
-  @order = Order.find(session[:order_id])
 
   def new
   end
 
   def create
+    @order = Order.find(session[:order_id])
     @items = @order.shopping_cart_items
-    @total_amount = Order.last.total
+    @total_amount = @order.total
     @amount = @total_amount.to_i*100
 
     customer = Stripe::Customer.create(
@@ -21,8 +21,8 @@ class ChargesController < ApplicationController
         description: 'Rails Stripe customer',
         currency: 'usd'
     )
-
-    if charge != nil
+    binding.pry
+    if charge.paid
       @order.update(finalized: true)
     end
 
