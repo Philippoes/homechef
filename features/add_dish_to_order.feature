@@ -10,6 +10,7 @@ Feature: Add dish to order
       | name      | description                                               | price | ready_time | portions |
       | meatballs | homecooked with love, including mashed potatoes and sauce | 4     | 18:00      | 10       |
       | taco      | really spicy authentic mexican tacos                      | 5     | 16:00      | 10       |
+    And that there is a user logged in with an email of "email@random.com"
 
   Scenario: Successfully add dish to order
     When I am on the "landing" page

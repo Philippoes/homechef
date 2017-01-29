@@ -6,7 +6,6 @@ After '@javascript' do
 end
 
 Before '@stripe' do
-  WebMock.disable_net_connect!(allow_localhost: true)
   StripeMock.start
 end
 

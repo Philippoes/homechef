@@ -9,6 +9,7 @@ Feature: As a buying User,
       | name      | description                                               | price | ready_time | portions |
       | meatballs | homecooked with love, including mashed potatoes and sauce | 49    | 18:00      | 10       |
       | taco      | really spicy authentic mexican tacos                      | 59    | 16:00      | 10       |
+    And that there is a user logged in with an email of "email@random.com"
 
   Scenario: Visitor is on main page and has an order
     When I am on the "landing" page

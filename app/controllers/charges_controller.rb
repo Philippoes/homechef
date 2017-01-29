@@ -1,10 +1,13 @@
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
   end
 
   def create
-    @dishes = Order.last.shopping_cart_items.all
-    @total_amount = Order.last.total
+    @order = Order.find(session[:order_id])
+    @items = @order.shopping_cart_items
+    @total_amount = @order.total
     @amount = @total_amount.to_i*100
     Order.last.shopping_cart_items.each do |item|
       dish = Dish.find(item.item.id)
@@ -23,9 +26,14 @@ class ChargesController < ApplicationController
         currency: 'usd'
     )
 
+    if charge.paid
+      @order.update(finalized: true)
+      session.delete :order_id
+    end
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to checkout_index_path
   end
 
   private

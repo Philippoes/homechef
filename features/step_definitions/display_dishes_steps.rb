@@ -4,7 +4,7 @@ Given(/^the following dishes exists$/) do |table|
   end
 end
 
-When(/^I am on the "([^"]*)" page$/) do |page|
+When(/^I (?:am on|go to) the "([^"]*)" page$/) do |page|
   case page
     when 'landing'
       visit root_path
