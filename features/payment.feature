@@ -13,27 +13,27 @@ Feature: As a Buying User,
       | name      | description                                               | price | ready_time | portions |
       | meatballs | homecooked with love, including mashed potatoes and sauce | 10    | 18:00      | 10       |
       | taco      | really spicy authentic mexican tacos                      | 10    | 16:00      | 10       |
-    And I am on the "landing" page
     And that there is a user logged in with an email of "email@random.com"
+    And I am on the "landing" page
 
 
   Scenario: Buying User pays for the dishes in her order
-    And I click the "Add dish" button for "taco"
+    When I click the "Add dish" button for "taco"
     And I click the "Add dish" button for "meatballs"
     And there should be "2" items on the last order
-    And I am on the "Checkout" page
+    And I go to the "Checkout" page
     And I click the stripe button
     And I fill in my card details on the stripe form
     And I submit the stripe form
     Then I should see "Thanks, you paid $20.00!" on the order confirmation page
 
   Scenario: User pays for the dishes and then tries to visit checkout screen
-    And I click the "Add dish" button for "taco"
+    When I click the "Add dish" button for "taco"
     And I click the "Add dish" button for "meatballs"
     And there should be "2" items on the last order
-    And I am on the "Checkout" page
+    And I go to the "Checkout" page
     And I click the stripe button
-    When I fill in my card details on the stripe form
+    And I fill in my card details on the stripe form
     And I submit the stripe form
     Then I should see "Thanks, you paid $20.00!" on the order confirmation page
     When I go to the "landing" page
@@ -45,7 +45,7 @@ Feature: As a Buying User,
     And I click the "Add dish" button for "taco"
     And I click the "Add dish" button for "meatballs"
     And there should be "2" items on the last order
-    And I am on the "Checkout" page
+    And I go to the "Checkout" page
     And I click the stripe button
     And I check out but my card is declined
     Then I should see "The card was declined"

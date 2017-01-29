@@ -10,10 +10,10 @@ Feature: As a buying User,
       | meatballs | homecooked with love, including mashed potatoes and sauce | 49    | 18:00      | 10       |
       | taco      | really spicy authentic mexican tacos                      | 59    | 16:00      | 10       |
     And that there is a user logged in with an email of "email@random.com"
+    And I am on the "landing" page
 
   Scenario: Visitor is on main page and has an order
-    When I am on the "landing" page
-    And I click the "Add dish" button for "taco"
+    When I click the "Add dish" button for "taco"
     And I click the "Add dish" button for "meatballs"
     And there should be "2" items on the last order
     And I click "Checkout" button
@@ -29,13 +29,11 @@ Feature: As a buying User,
     And I should not see "Taco"
 
   Scenario: Visitor tries to access checkout page without items in the order
-    When I am on the "landing" page
-    And I click "Checkout" button
+    When I click "Checkout" button
     Then I should see "You have no items in your order"
 
   Scenario: Visitor removes all items from his basket should be redirected to landing page
-    When I am on the "landing" page
-    And I click the "Add dish" button for "meatballs"
+    When I click the "Add dish" button for "meatballs"
     And there should be "1" items on the last order
     And I click "Checkout" button
     Then I should see "Meatballs"
