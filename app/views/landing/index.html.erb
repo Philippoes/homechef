@@ -5,3 +5,36 @@
     <%= submit_tag 'Search', class: 'btn btn-danger' %>
 <% end %>
 <%= render partial: '/dishes/index' %>
+<style type="text/css">
+  #map {
+    width: 900px;
+    height: 600px;
+  }
+</style>
+<div id="map"></div>
+<script>
+    var map = new GMaps({
+        div: '#map',
+        lat: <%= session[:geo_location]['lat'] %>,
+        lng: <%= session[:geo_location]['lng'] %>
+    });
+
+    map.addMarker({
+        lat: <%= session[:geo_location]['lat'] %>,
+        lng: <%= session[:geo_location]['lng'] %>,
+        title: 'You',
+        click: function(e) {
+            alert('You are here ');
+        }
+    });
+    <% @dishes.each do |dish| %>
+    map.addMarker({
+        lat: <%= dish.lat %>,
+        lng: <%= dish.lng %>,
+        title: '<%= dish.name.humanize %><br /><%= dish.price %><%= dish.portions %>',
+        click: function(e) {
+            alert('You are here ');
+        }
+    });
+    <% end %>
+</script>
