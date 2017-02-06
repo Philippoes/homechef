@@ -23,6 +23,7 @@ gem 'acts_as_shopping_cart', '~> 0.4.1'
 gem 'devise'
 gem 'geokit-rails'
 gem 'devise-bootstrap-views'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'pry'
