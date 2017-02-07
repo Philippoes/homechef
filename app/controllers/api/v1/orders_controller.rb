@@ -4,8 +4,7 @@ class Api::V1::OrdersController < ApiController
     begin
       dish = Dish.find(params[:dish_id])
     rescue ActiveRecord::RecordNotFound
-      render json: {message: "Something went wrong, you did not add a dish to your order"}
-      redirect_back(fallback_location: api_v1_dishes_path)
+      render json: {message: "Something went wrong, you did not add a dish to your order"} and return
     end
     @order.add(dish, dish.price)
     render json: {message: "Successfully added Pizza"}
