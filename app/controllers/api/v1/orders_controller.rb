@@ -9,7 +9,8 @@ class Api::V1::OrdersController < ApiController
   private
 
   def create_order
-    @order = Order.create(user: current_user)
+    user = FactoryGirl.create(:user)
+    @order = Order.create(user: user)
   end
 
 end
