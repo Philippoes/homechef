@@ -6,7 +6,7 @@ RSpec.describe Api::V1::ProjectApiController, type: :request do
       get '/api/v1/dishes'
 
       expect(response.status).to eq 200
-      expect(response_json['message']).to eq 'Pong'
+      expect(response_json['message']).to eq 'all dishessss'
     end
   end
 end
