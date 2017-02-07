@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       resources :dishes, only: [:index]
-      get :add_to_order, controller: :orders, action: :add_to_order
+      resources :orders, only: [:create]
     end
   end
 end

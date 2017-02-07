@@ -1,5 +1,5 @@
 class Api::V1::OrdersController < ApiController
-  def add_to_order
-
+  def create
+    render json: {message: "Successfully added Pizza"}
   end
 end
