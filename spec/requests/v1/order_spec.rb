@@ -5,8 +5,8 @@ RSpec.describe Api::V1::OrdersController, type: :request do
     it 'should add a dish to order' do
       FactoryGirl.create(:dish)
       get '/api/v1/add_to_order'
+      expect(response_json['message'].to eq ["Successfully added Pizza"])
       expect(response.status).to eq 200
-      expect(response_json['message'].to eq "Successfully added #{:dish} to order"
     end
   end
 end
