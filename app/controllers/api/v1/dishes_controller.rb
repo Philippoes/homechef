@@ -1,7 +1,4 @@
-class DishesController < ApiController
-  include Geokit::Geocoders
-  include GeokitHelper
-  geocode_ip_address
+class DishesController < ProjectApiController
 
   def index
     @dishes = Dish.all

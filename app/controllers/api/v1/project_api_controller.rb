@@ -1,4 +1,4 @@
-class ApiController < ActionController::API
+class ProjectApiController < ActionController::API
   before_action :set_default_response_format
 
   protected
