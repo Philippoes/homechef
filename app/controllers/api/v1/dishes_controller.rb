@@ -1,4 +1,4 @@
-class Api::V1::DishesController < ProjectApiController
+class Api::V1::DishesController < ApiController
 
   def index
     @dishes = Dish.all
