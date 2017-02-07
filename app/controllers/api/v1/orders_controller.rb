@@ -4,7 +4,7 @@ class Api::V1::OrdersController < ApiController
     begin
       dish = Dish.find(params[:dish_id])
     rescue ActiveRecord::RecordNotFound
-      render json: {message: "Something went wrong, you did not add a dish to your order"} and return
+      render json: { message: "Something went wrong, you did not add a dish to your order" }, status: :unprocessable_entity and return
     end
     @order.add(dish, dish.price)
     render json: {message: "Successfully added Pizza"}

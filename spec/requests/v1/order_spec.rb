@@ -10,7 +10,7 @@ RSpec.describe Api::V1::OrdersController, type: :request do
       expect(response.status).to eq 200
     end
 
-    it 'should give error if dish_id is invalid' do
+    it 'should give error if dish is missing or invalid' do
       dish = FactoryGirl.create(:dish)
       post '/api/v1/orders', params: {
           dish_id: dish.name }
