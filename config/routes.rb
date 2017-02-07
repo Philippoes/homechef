@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users', controllers: {registrations: 'registrations'}
-	resources :users do
-		resources :dishes, only: [:new, :create]
-	end
+
+  devise_for :users, path: 'users', controllers: {
+    registrations: 'registrations'
+  }
+
+  resources :users do
+    resources :dishes, only: [:new, :create]
+  end
+
   root controller: :landing, action: :index
   resources :checkout, only: [:index]
   resources :charges, only: [:create]
@@ -15,6 +20,8 @@ Rails.application.routes.draw do
     namespace :v1, defaults: { format: :json } do
       resources :dishes, only: [:index]
       resources :orders, only: [:create]
+      mount_devise_token_auth_for 'User', at: 'auth',
+                                          skip: [:omniauth_callbacks]
     end
   end
 end
