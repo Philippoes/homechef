@@ -1,7 +1,8 @@
 class Api::V1::OrdersController < ApiController
   def create
     create_order
-    dish = Dish.find(params[:dish_id])
+    begin
+      dish = Dish.find(params[:dish_id])
     rescue ActiveRecord::RecordNotFound
       render json: {message: "Something went wrong, you did not add a dish to your order"}
       redirect_back(fallback_location: api_v1_dishes_path)
