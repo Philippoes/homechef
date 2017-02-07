@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   post :remove_from_order, controller: :checkout, action: :delete
   post :search_by_address, controller: :landing, action: :address_search
   resources :users, only: [:show]
+
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :landing, only: [:index]
+    end
+  end
 end
