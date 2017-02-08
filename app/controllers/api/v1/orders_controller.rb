@@ -1,4 +1,6 @@
 class Api::V1::OrdersController < ApiController
+  before_action :authenticate_api_v1_user!
+
   def create
     create_order
     begin
@@ -13,7 +15,7 @@ class Api::V1::OrdersController < ApiController
   private
 
   def create_order
-    user =
+    user = current_api_v1_user
     @order = Order.create(user: user)
   end
 end

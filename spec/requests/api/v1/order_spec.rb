@@ -10,6 +10,7 @@ RSpec.describe Api::V1::OrdersController, type: :request do
       dish = FactoryGirl.create(:dish)
       post '/api/v1/orders', params: {
         dish_id: dish.id }, headers: headers
+      binding.pry
       expect(response_json['message']).to eq "Successfully added Pizza"
       expect(response.status).to eq 200
     end
