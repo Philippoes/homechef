@@ -13,7 +13,7 @@ class Api::V1::OrdersController < ApiController
   private
 
   def create_order
-    user = FactoryGirl.create(:user)
+    user =
     @order = Order.create(user: user)
   end
 end
