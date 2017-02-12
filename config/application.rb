@@ -32,7 +32,8 @@ module Homechef
         origins '*'
         resource '*',
                  headers: :any,
-                 methods: [:get, :post, :put, :delete]
+                 expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                 methods: [:get, :post, :put, :delete, :options, :head]
       end
     end
   end
